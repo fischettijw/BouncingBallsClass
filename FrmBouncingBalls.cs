@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace BouncingBallsClass
         Timer Draw;
         Color BackgroundColor;
         Brush BackgroundBrush;
+
         int x, y;
         public FrmBouncingBalls()
         {
@@ -33,15 +35,16 @@ namespace BouncingBallsClass
             this.Paint += FrmBouncingBalls_Paint;
 
             Draw = new Timer();
-            Draw.Interval = 1;
+            Draw.Interval = 10;
             Draw.Tick += Draw_Tick;
             Draw.Enabled = true;
         }
 
         private void FrmBouncingBalls_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.FillRectangle(BackgroundBrush, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height);
-            e.Graphics.FillRectangle(Brushes.Red, x, y, 50, 50);
+            e.Graphics.FillEllipse(Brushes.Red, x, y, 50, 50);
         }
 
         private void Draw_Tick(object sender, EventArgs e)
