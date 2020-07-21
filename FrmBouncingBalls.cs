@@ -17,7 +17,8 @@ namespace BouncingBallsClass
         Color BackgroundColor;
         Brush BackgroundBrush;
 
-        int x, y;
+        int x, y, dx, dy;
+        int ballSize = 50;
         public FrmBouncingBalls()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace BouncingBallsClass
             BackgroundBrush = Brushes.AntiqueWhite;
             x = 0;
             y = 0;
+            dx = 2;
+            dy = 2;
 
             this.BackColor = BackgroundColor;
             this.Paint += FrmBouncingBalls_Paint;
@@ -44,13 +47,16 @@ namespace BouncingBallsClass
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.FillRectangle(BackgroundBrush, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height);
-            e.Graphics.FillEllipse(Brushes.Red, x, y, 50, 50);
+            e.Graphics.FillEllipse(Brushes.Red, x, y, ballSize, ballSize);
         }
 
         private void Draw_Tick(object sender, EventArgs e)
         {
-            x += 1;
-            y += 1;
+            if (((x + ballSize) > this.ClientRectangle.Width) || x < 0) dx = -1 * dx;
+            if (((y + ballSize) > this.ClientRectangle.Height) || y < 0) dy = -1 * dy;
+            x += dx;
+            y += dy;
+
             this.Refresh();
         }
     }
