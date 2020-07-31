@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BouncingBallsClass
@@ -14,7 +8,7 @@ namespace BouncingBallsClass
     public partial class FrmBouncingBalls : Form
     {
         Timer Draw;
-        Color BackgroundColor;
+        //Color BackgroundColor;
         Brush BackgroundBrush;
 
         int x, y, dx, dy;
@@ -27,27 +21,28 @@ namespace BouncingBallsClass
         private void FrmBouncingBalls_Load(object sender, EventArgs e)
         {
             this.DoubleBuffered = true;
-            BackgroundColor = Color.AntiqueWhite;
+            //BackgroundColor = Color.AntiqueWhite;
             BackgroundBrush = Brushes.AntiqueWhite;
             x = 0;
             y = 0;
             dx = 2;
             dy = 2;
 
-            this.BackColor = BackgroundColor;
+            //this.BackColor = BackgroundColor;
             this.Paint += FrmBouncingBalls_Paint;
 
             Draw = new Timer();
             Draw.Interval = 10;
             Draw.Tick += Draw_Tick;
-            Draw.Enabled = true;
+            Draw.Enabled = false;
         }
 
         private void FrmBouncingBalls_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(BackgroundBrush, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height);
+            //e.Graphics.FillRectangle(BackgroundBrush, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height);
             e.Graphics.FillEllipse(Brushes.Red, x, y, ballSize, ballSize);
+            e.Graphics.DrawLine(new Pen(Color.Red, 5), 50, 200, 400, 210);
         }
 
         private void Draw_Tick(object sender, EventArgs e)

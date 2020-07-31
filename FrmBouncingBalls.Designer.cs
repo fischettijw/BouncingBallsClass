@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 456);
+            this.ClientSize = new System.Drawing.Size(733, 448);
             this.Name = "FrmBouncingBalls";
-            this.Text = "Bouncing Balls with a Ball Class";
+            this.Text = "Bouncing Ball";
             this.Load += new System.EventHandler(this.FrmBouncingBalls_Load);
             this.ResumeLayout(false);
 
